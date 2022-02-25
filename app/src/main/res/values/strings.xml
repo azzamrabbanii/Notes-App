@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Notes App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="content_img_no_notes">Image show up when no notes found</string>
+    <string name="content_fab_add_note">FAB add note</string>
+</resources>
