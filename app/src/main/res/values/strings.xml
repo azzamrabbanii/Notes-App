@@ -4,4 +4,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="content_img_no_notes">Image show up when no notes found</string>
     <string name="content_fab_add_note">FAB add note</string>
+    <string name="txt_title">Title</string>
+    <string name="txt_priority">Priority</string>
+    <string name="txt_date">Date</string>
+    <string name="txt_description">Description</string>
+    <string name="txt_add">Add</string>
+    <string name="txt_detail">Detail</string>
+    <string name="txt_update">Update</string>
 </resources>
