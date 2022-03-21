@@ -1,4 +1,4 @@
-package com.azzam.notesapp.utils
+package com.azzam.notesapp.utills
 
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
@@ -9,11 +9,15 @@ import com.azzam.notesapp.R
 import com.google.android.material.appbar.MaterialToolbar
 
 object ExtensionFunctions {
-    fun MaterialToolbar.setActionBar(activity: FragmentActivity) {
+
+    fun MaterialToolbar.setActionBar(requireActivity: FragmentActivity) {
+
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
+
         setupWithNavController(navController, appBarConfiguration)
-        (activity as MainActivity).setSupportActionBar(this)
+        (requireActivity as MainActivity).setSupportActionBar(this)
+
         navController.addOnDestinationChangedListener {_, destination, _ ->
             when (destination.id) {
                 R.id.updateFragment -> this.setNavigationIcon(R.drawable.ic_left_arrow)
@@ -21,5 +25,8 @@ object ExtensionFunctions {
                 R.id.detailFragment -> this.setNavigationIcon(R.drawable.ic_left_arrow)
             }
         }
+
     }
+
+
 }

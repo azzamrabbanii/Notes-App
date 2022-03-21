@@ -1,4 +1,4 @@
-package com.azzam.notesapp.local
+package com.azzam.notesapp.data.local
 
 enum class Priority {
     HIGH,
