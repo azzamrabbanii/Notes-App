@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_detailFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="notes"
+            app:argType="com.azzam.notesapp.data.local.Notes" />
     </fragment>
     <fragment
         android:id="@+id/updateFragment"

@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.azzam.notesapp.R
 import com.azzam.notesapp.databinding.FragmentUpdateBinding
-import com.azzam.notesapp.utills.ExtensionFunctions.setActionBar
-import com.azzam.notesapp.utills.HelperFunctions.setPriorityColor
+import com.azzam.notesapp.utils.ExtensionFunctions.setActionBar
+import com.azzam.notesapp.utils.HelperFunctions.setPriorityColor
 
 
 class UpdateFragment : Fragment() {

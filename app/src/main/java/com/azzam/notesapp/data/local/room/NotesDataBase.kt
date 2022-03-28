@@ -7,7 +7,6 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.azzam.notesapp.data.local.Notes
 
-
 @Database(entities = [Notes::class], version = 1, exportSchema = false)
 @TypeConverters(Converter::class)
 abstract class NotesDatabase : RoomDatabase() {

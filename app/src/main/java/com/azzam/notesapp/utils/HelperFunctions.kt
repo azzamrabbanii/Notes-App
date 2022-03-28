@@ -1,4 +1,4 @@
-package com.azzam.notesapp.utills
+package com.azzam.notesapp.utils
 
 import android.content.Context
 import android.view.View

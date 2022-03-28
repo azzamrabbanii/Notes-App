@@ -2,23 +2,27 @@ package com.azzam.notesapp.presentation.detail
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.azzam.notesapp.R
 import com.azzam.notesapp.databinding.FragmentDetailBinding
-import com.azzam.notesapp.utills.ExtensionFunctions.setActionBar
+import com.azzam.notesapp.utils.ExtensionFunctions.setActionBar
 
 class DetailFragment : Fragment() {
 
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding as FragmentDetailBinding
 
+    private val args by navArgs<DetailFragmentArgs>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentDetailBinding.inflate(layoutInflater)
         return binding.root
@@ -29,6 +33,15 @@ class DetailFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding.toolbarDetail.setActionBar(requireActivity())
+//        binding.detail = args
+
+        binding.apply {
+            tvTitleDetail.text = args.notes.title
+            tvDescriptionDetail.text = args.notes.desc
+            tvDateDetail.text = args.notes.date
+        }
+
+        Log.i("detail", args.notes.title)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

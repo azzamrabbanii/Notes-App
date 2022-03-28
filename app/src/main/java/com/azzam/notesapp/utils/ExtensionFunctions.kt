@@ -1,4 +1,4 @@
-package com.azzam.notesapp.utills
+package com.azzam.notesapp.utils
 
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
