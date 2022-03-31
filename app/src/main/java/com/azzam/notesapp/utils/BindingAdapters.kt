@@ -1,5 +1,6 @@
 package com.azzam.notesapp.utils
 
+import androidx.appcompat.widget.AppCompatSpinner
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
@@ -29,4 +30,22 @@ object BindingAdapters {
             view.findNavController().navigate(action)
         }
     }
+
+    @BindingAdapter("android:parsePriorityToInt")
+    @JvmStatic
+    fun parsePriorityToInt(view: AppCompatSpinner, priority: Priority) {
+        when (priority) {
+            Priority.HIGH -> {
+                view.setSelection(0)
+            }
+            Priority.MEDIUM -> {
+                view.setSelection(1)
+            }
+            Priority.LOW -> {
+                view.setSelection(2)
+            }
+        }
+    }
+
+
 }

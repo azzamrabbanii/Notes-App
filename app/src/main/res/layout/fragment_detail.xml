@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{detail.notes.title}"
+            android:text="@{detail.notes.date}"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             app:layout_constraintTop_toBottomOf="@id/tv_title_detail" />
