@@ -72,7 +72,7 @@ class AddFragment : Fragment() {
             val priority = spinnerPriorities.selectedItem.toString()
 
             val calendar = Calendar.getInstance().time
-            val date = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(calendar)
+            val date = SimpleDateFormat("dd MM yyyy", Locale.getDefault()).format(calendar)
 
             val data = Notes(
                 0,

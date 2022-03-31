@@ -6,18 +6,21 @@ import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.room.Delete
 import com.azzam.notesapp.R
 import com.azzam.notesapp.databinding.FragmentDetailBinding
+import com.azzam.notesapp.presentation.NotesViewModel
 import com.azzam.notesapp.utils.ExtensionFunctions.setActionBar
 
 class DetailFragment : Fragment() {
 
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding as FragmentDetailBinding
-
     private val args by navArgs<DetailFragmentArgs>()
+    private val detailViewModel by viewModels<NotesViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,13 +36,7 @@ class DetailFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding.toolbarDetail.setActionBar(requireActivity())
-//        binding.detail = args
-
-        binding.apply {
-            tvTitleDetail.text = args.notes.title
-            tvDescriptionDetail.text = args.notes.desc
-            tvDateDetail.text = args.notes.date
-        }
+        binding.detail = args
 
         Log.i("detail", args.notes.title)
     }
@@ -59,9 +56,10 @@ class DetailFragment : Fragment() {
 
     private fun confirmDeleteNote() {
         AlertDialog.Builder(context)
-            .setTitle("Delete Note?")
-            .setMessage("Are You Sure Want To Delete This Note?")
+            .setTitle("Delete '${args.notes.title}' ?")
+            .setMessage("Are You Sure Want To Delete '${args.notes.title} ?")
             .setPositiveButton("Yes") { _, _ ->
+                detailViewModel.deleteNote(args.notes)
                 Toast.makeText(context, "Successfully Delete this Note", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.action_detailFragment_to_homeFragment)
             }
