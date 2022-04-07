@@ -31,6 +31,10 @@
     <style name="ActionBarStyle" parent="android:Widget.ActionBar">
         <item name="backgroundColor">@color/white</item>
     </style>
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_splash_screen</item>
+        <item name="android:statusBarColor">@color/white</item>
+    </style>
 
     <style name="noActionBar" parent="Theme.NotesApp">
         <item name="windowActionBar">false</item>

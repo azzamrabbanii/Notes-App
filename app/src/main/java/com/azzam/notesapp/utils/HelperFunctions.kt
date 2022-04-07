@@ -50,7 +50,7 @@ object HelperFunctions {
         }
     }
 
-    val emptyDataBase = MutableLiveData<Boolean>()
+    val emptyDataBase: MutableLiveData<Boolean> = MutableLiveData(true)
 
     fun checkDataIsEmpty(data: List<Notes>) {
         emptyDataBase.value = data.isEmpty()

@@ -72,17 +72,17 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         }
     }
 
-//    private fun checkDataIsEmpty(data: List<Notes>) {
-//        binding.apply {
-//            if (data.isEmpty()) {
-//                imgNoData.visibility = View.VISIBLE
-//                rvNotes.visibility = View.INVISIBLE
-//            } else {
-//                imgNoData.visibility = View.INVISIBLE
-//                rvNotes.visibility = View.VISIBLE
-//            }
-//        }
-//    }
+    private fun checkDataIsEmpty(data: List<Notes>) {
+        binding.apply {
+            if (data.isEmpty()) {
+                imgNoData.visibility = View.VISIBLE
+                rvNotes.visibility = View.INVISIBLE
+            } else {
+                imgNoData.visibility = View.INVISIBLE
+                rvNotes.visibility = View.VISIBLE
+            }
+        }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
