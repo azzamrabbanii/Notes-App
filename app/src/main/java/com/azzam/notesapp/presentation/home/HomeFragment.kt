@@ -164,7 +164,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     private fun restoredData(view: View, deletedItem: Notes) {
-        Snackbar.make(view, "Deleted`${deletedItem.title}`" , Snackbar.LENGTH_LONG)
+        Snackbar.make(view, " Deleted`${deletedItem.title}`" , Snackbar.LENGTH_LONG)
             .setTextColor(ContextCompat.getColor(view.context, R.color.black))
             .setAction(getString(R.string.txt_undo)) {
                 homeViewModel.insertNotes(deletedItem)
