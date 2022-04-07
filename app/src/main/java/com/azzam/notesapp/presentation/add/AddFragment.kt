@@ -15,6 +15,7 @@ import com.azzam.notesapp.data.local.Notes
 import com.azzam.notesapp.data.local.Priority
 import com.azzam.notesapp.databinding.FragmentAddBinding
 import com.azzam.notesapp.presentation.NotesViewModel
+import com.azzam.notesapp.utils.HelperFunctions.parseToPriority
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -79,23 +80,12 @@ class AddFragment : Fragment() {
                 title,
                 desc,
                 date,
-                parseToPriority(priority)
+                parseToPriority(context, priority)
             )
             addViewModel.insertNotes(data)
         }
 
     }
-
-    private fun parseToPriority(priority: String): Priority {
-        val arrPriority = resources.getStringArray(R.array.priorities)
-        return when (priority) {
-            arrPriority[0] -> Priority.HIGH
-            arrPriority[1] -> Priority.MEDIUM
-            arrPriority[2] -> Priority.LOW
-            else -> Priority.HIGH
-        }
-    }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

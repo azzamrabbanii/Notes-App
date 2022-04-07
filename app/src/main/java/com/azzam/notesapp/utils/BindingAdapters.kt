@@ -1,8 +1,10 @@
 package com.azzam.notesapp.utils
 
+import android.view.View
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.azzam.notesapp.R
 import com.azzam.notesapp.data.local.Notes
@@ -44,6 +46,15 @@ object BindingAdapters {
             Priority.LOW -> {
                 view.setSelection(2)
             }
+        }
+    }
+
+    @BindingAdapter("android:emptyDataBase")
+    @JvmStatic
+    fun emptyDataBase(view: View, emptyDataBase: MutableLiveData<Boolean>) {
+        when (emptyDataBase.value) {
+            true -> view.visibility = View.VISIBLE
+            else -> view.visibility = View.INVISIBLE
         }
     }
 

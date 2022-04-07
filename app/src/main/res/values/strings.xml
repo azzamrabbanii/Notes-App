@@ -22,4 +22,5 @@
     <string name="content_fab_add_a_note">Fab add note</string>
     <string name="content_image_no_data">no data</string>
     <string name="go_to_detail_fragment">Go To Detail Fragment</string>
+    <string name="txt_undo">Undo</string>
 </resources>

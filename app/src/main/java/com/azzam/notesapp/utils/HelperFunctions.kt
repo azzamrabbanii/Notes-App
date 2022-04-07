@@ -5,7 +5,11 @@ import android.view.View
 import android.widget.AdapterView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.azzam.notesapp.R
+import com.azzam.notesapp.data.local.Notes
+import com.azzam.notesapp.data.local.Priority
 
 object HelperFunctions {
     fun setPriorityColor(context: Context, cardView: CardView) : AdapterView.OnItemSelectedListener {
@@ -33,7 +37,23 @@ object HelperFunctions {
             }
 
         }
-
         return listener
     }
+
+    fun parseToPriority(context: Context? ,priority: String): Priority {
+        val arrPriority = context?.resources?.getStringArray(R.array.priorities)
+        return when (priority) {
+            arrPriority?.get(0) -> Priority.HIGH
+            arrPriority?.get(1) -> Priority.MEDIUM
+            arrPriority?.get(2) -> Priority.LOW
+            else -> Priority.HIGH
+        }
+    }
+
+    val emptyDataBase = MutableLiveData<Boolean>()
+
+    fun checkDataIsEmpty(data: List<Notes>) {
+        emptyDataBase.value = data.isEmpty()
+    }
+
 }

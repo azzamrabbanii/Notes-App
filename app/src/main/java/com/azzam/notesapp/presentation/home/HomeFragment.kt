@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -16,6 +17,9 @@ import com.azzam.notesapp.data.local.Notes
 import com.azzam.notesapp.databinding.FragmentHomeBinding
 import com.azzam.notesapp.presentation.NotesViewModel
 import com.azzam.notesapp.utils.ExtensionFunctions.setActionBar
+import com.azzam.notesapp.utils.HelperFunctions
+import com.azzam.notesapp.utils.HelperFunctions.checkDataIsEmpty
+import com.google.android.material.snackbar.Snackbar
 
 class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: FragmentHomeBinding? = null
@@ -41,6 +45,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             homeAdapter.setData(it)
         }
 
+        binding.mHelperFunction = HelperFunctions
         setHasOptionsMenu(true)
 
         binding.apply {
@@ -63,20 +68,21 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             }
             adapter = homeAdapter
             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            swipeToDelete(this)
         }
     }
 
-    private fun checkDataIsEmpty(data: List<Notes>) {
-        binding.apply {
-            if (data.isEmpty()) {
-                imgNoData.visibility = View.VISIBLE
-                rvNotes.visibility = View.INVISIBLE
-            } else {
-                imgNoData.visibility = View.INVISIBLE
-                rvNotes.visibility = View.VISIBLE
-            }
-        }
-    }
+//    private fun checkDataIsEmpty(data: List<Notes>) {
+//        binding.apply {
+//            if (data.isEmpty()) {
+//                imgNoData.visibility = View.VISIBLE
+//                rvNotes.visibility = View.INVISIBLE
+//            } else {
+//                imgNoData.visibility = View.INVISIBLE
+//                rvNotes.visibility = View.VISIBLE
+//            }
+//        }
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
@@ -150,10 +156,21 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val deletedItem = homeAdapter.listNotes[viewHolder.adapterPosition]
                 homeViewModel.deleteNote(deletedItem)
+                restoredData(viewHolder.itemView, deletedItem)
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeToDelete)
         itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
+
+    private fun restoredData(view: View, deletedItem: Notes) {
+        Snackbar.make(view, "Deleted`${deletedItem.title}`" , Snackbar.LENGTH_LONG)
+            .setTextColor(ContextCompat.getColor(view.context, R.color.black))
+            .setAction(getString(R.string.txt_undo)) {
+                homeViewModel.insertNotes(deletedItem)
+            }
+            .setTextColor(ContextCompat.getColor(view.context, R.color.black))
+            .show()
     }
 
     override fun onDestroyView() {

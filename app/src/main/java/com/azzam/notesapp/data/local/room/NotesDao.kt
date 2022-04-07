@@ -1,10 +1,7 @@
 package com.azzam.notesapp.data.local.room
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.azzam.notesapp.data.local.Notes
 
 @Dao
@@ -29,4 +26,7 @@ interface NotesDao {
 
     @Delete
     suspend fun deleteNote(notes: Notes)
+
+    @Update
+    suspend fun updateNote(note: Notes)
 }
