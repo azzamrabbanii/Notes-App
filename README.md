@@ -1,7 +1,7 @@
 # Notes-App
 RPL IDN Learning, Source Code Project 6
 
-In this project i have learned about:
+## In this project i have learned about:
 - Custom ActionBar using MaterialToolBar
 - setHasOptionMenu on Fragment with different menu each Fragment
 - Custom menu on ActionBar (Action Layout)
@@ -21,3 +21,10 @@ In this project i have learned about:
 - MVVM android app architecture
 - ViewModel
 - Wasabeef RecyclerView Animators
+
+## This the result of my learn:
+| <img src="/images/ss1.png"/> | <img src="/images/ss2.png"/> | <img src="/images/ss3.png"/> 
+| :--: | :--: | :--: |
+
+| <img src="/images/ss4.png"/> | <img src="/images/ss5.png"/> | <img src="/images/ss6.png"/> 
+| :--: | :--: | :--: |
