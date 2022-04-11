@@ -15,6 +15,7 @@ In this project i have learned about:
 - Data Binding
 - SafeArgs
 - CRUD (create read update delete) ROOM Database
+- DB Browser For SQLite
 - Restored Deleted Data
 - Sort Data by Priority (EmuClass)
 - MVVM android app architecture
